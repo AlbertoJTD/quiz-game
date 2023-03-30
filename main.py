@@ -7,7 +7,7 @@ question_bank = []
 
 # Store questions in the question_bank list
 for question in question_data:
-    question_bank.append(Question(question['text'], question['answer']))
+    question_bank.append(Question(question['question'], question['correct_answer']))
 
 # Create a QuizBrain object and give it as an argument the list
 quiz = QuizBrain(question_bank)
