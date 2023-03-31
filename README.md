@@ -1,4 +1,5 @@
 # Question game
+`Python 3.11.1`
 
 This is a simpled questions game where you have to answer a True or False questions
 
