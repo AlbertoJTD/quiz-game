@@ -14,9 +14,11 @@ class QuizBrain:
         self.current_question = self.question_list[self.question_number]
         self.question_number += 1
         question = html.unescape(self.current_question.text)
-        choice = input(f"Q.{self.question_number}: {question} (True/False) > ")
 
-        self.check_answer(choice, self.current_question.answer)
+        return f"Q.{self.question_number}: {question}"
+        # choice = input(f"Q.{self.question_number}: {question} (True/False) > ")
+        #
+        # self.check_answer(choice, self.current_question.answer)
 
     def check_answer(self, choice, answer):
         if choice.lower() == answer.lower():
