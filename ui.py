@@ -6,6 +6,7 @@ THEME_COLOR = "#375362"
 class QuizInterface:
     def __init__(self, quiz_brain: QuizBrain):
         self.quiz = quiz_brain
+        print(self.quiz)
 
         self.window = Tk()
         self.window.title('Quiz Game')
@@ -19,17 +20,23 @@ class QuizInterface:
         self.canvas.grid(row=1, column=0, columnspan=2, pady=50)
 
         true_img = PhotoImage(file="images/true.png")
-        self.true_button = Button(image=true_img, highlightthickness=0, relief="flat")
+        self.true_button = Button(image=true_img, highlightthickness=0, relief="flat", command=self.true_pressed)
         self.true_button.grid(row=2, column=0)
 
         false_img = PhotoImage(file="images/false.png")
-        self.false_button = Button(image=false_img, highlightthickness=0, relief="flat")
+        self.false_button = Button(image=false_img, highlightthickness=0, relief="flat", command=self.false_pressed)
         self.false_button.grid(row=2, column=1)
 
-        self.get_next_questions()
+        self.get_next_question()
 
         self.window.mainloop()
 
-    def get_next_questions(self):
+    def get_next_question(self):
         new_question = self.quiz.next_question()
         self.canvas.itemconfig(self.question, text=new_question)
+
+    def true_pressed(self):
+        self.quiz.check_answer('True')
+
+    def false_pressed(self):
+        self.quiz.check_answer('False')

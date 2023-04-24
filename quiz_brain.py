@@ -20,7 +20,8 @@ class QuizBrain:
         #
         # self.check_answer(choice, self.current_question.answer)
 
-    def check_answer(self, choice, answer):
+    def check_answer(self, choice):
+        answer = self.current_question.answer
         if choice.lower() == answer.lower():
             print("You got it right!")
             self.score += 1
