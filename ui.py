@@ -6,7 +6,6 @@ THEME_COLOR = "#375362"
 class QuizInterface:
     def __init__(self, quiz_brain: QuizBrain):
         self.quiz = quiz_brain
-        print(self.quiz)
 
         self.window = Tk()
         self.window.title('Quiz Game')
@@ -33,10 +32,13 @@ class QuizInterface:
 
     def get_next_question(self):
         self.canvas.config(bg='white')
-        new_question = self.quiz.next_question()
-        self.canvas.itemconfig(self.question, text=new_question)
-
-        self.canvas.itemconfig
+        if self.quiz.still_has_questions():
+            new_question = self.quiz.next_question()
+            self.canvas.itemconfig(self.question, text=new_question)
+        else:
+            self.canvas.itemconfig(self.question, text='You have completed the quiz')
+            self.true_button.config(state='disabled')
+            self.false_button.config(state='disabled')
 
     def true_button_pressed(self):
         is_right = self.quiz.check_answer('True')
