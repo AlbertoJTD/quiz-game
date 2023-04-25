@@ -10,12 +10,6 @@ question_bank = []
 for question in question_data:
     question_bank.append(Question(question['question'], question['correct_answer']))
 
-# Create a QuizBrain object and give it as an argument the list
+# Create a QuizBrain object and initialize the UI
 quiz = QuizBrain(question_bank)
 quiz_ui = QuizInterface(quiz)
-
-# while quiz.still_has_questions():
-#     quiz.next_question()
-
-# Print your final score
-quiz.result()

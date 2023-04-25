@@ -16,24 +16,11 @@ class QuizBrain:
         question = html.unescape(self.current_question.text)
 
         return f"Q.{self.question_number}: {question}"
-        # choice = input(f"Q.{self.question_number}: {question} (True/False) > ")
-        #
-        # self.check_answer(choice, self.current_question.answer)
 
     def check_answer(self, choice):
         answer = self.current_question.answer
         if choice.lower() == answer.lower():
-            print("You got it right!")
             self.score += 1
-
-        else:
-            print("That's wrong")
-
-        print(f"The correct answer was: {answer}")
-        print(f"Your current score is: {self.score} / {len(self.question_list)}\n")
-
-    def result(self):
-        print("You have completed the quiz")
-        print(f"Your final score was: {self.score} / {len(self.question_list)}")
-
+            return True
+        return False
 

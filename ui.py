@@ -20,11 +20,11 @@ class QuizInterface:
         self.canvas.grid(row=1, column=0, columnspan=2, pady=50)
 
         true_img = PhotoImage(file="images/true.png")
-        self.true_button = Button(image=true_img, highlightthickness=0, relief="flat", command=self.true_pressed)
+        self.true_button = Button(image=true_img, highlightthickness=0, relief="flat", command=self.true_button_pressed)
         self.true_button.grid(row=2, column=0)
 
         false_img = PhotoImage(file="images/false.png")
-        self.false_button = Button(image=false_img, highlightthickness=0, relief="flat", command=self.false_pressed)
+        self.false_button = Button(image=false_img, highlightthickness=0, relief="flat", command=self.false_button_pressed)
         self.false_button.grid(row=2, column=1)
 
         self.get_next_question()
@@ -32,11 +32,26 @@ class QuizInterface:
         self.window.mainloop()
 
     def get_next_question(self):
+        self.canvas.config(bg='white')
         new_question = self.quiz.next_question()
         self.canvas.itemconfig(self.question, text=new_question)
 
-    def true_pressed(self):
-        self.quiz.check_answer('True')
+        self.canvas.itemconfig
 
-    def false_pressed(self):
-        self.quiz.check_answer('False')
+    def true_button_pressed(self):
+        is_right = self.quiz.check_answer('True')
+        self.give_feedback(is_right)
+
+    def false_button_pressed(self):
+        is_right = self.quiz.check_answer('False')
+        self.give_feedback(is_right)
+
+    def give_feedback(self, is_right):
+        if is_right:
+            self.canvas.config(bg='#A7E5B6')
+            self.score_label.config(text=f'Score: {self.quiz.score}')
+        else:
+            self.canvas.config(bg='#FF8080')
+
+        self.window.after(1000, self.get_next_question)
+
