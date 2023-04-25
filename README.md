@@ -1,9 +1,11 @@
 # Question game
 `Python 3.11.1`
 
-This is a simpled questions game where you have to answer a True or False questions
+This is a quiz game where you have to answer with True or False, the questions were obtained from
+[Open Trivia Database](https://opentdb.com/)
 
-* You can replace the contents of the _data.py_ file and get new questions from [Open Trivia Database](https://opentdb.com/)
+## How it works
+- When the game starts, you will see the questions and a True and False button
+- If the choice you have made is correct, the background will turn green, otherwise it will turn red
 
-This is what is looks like in action:
-![image](https://user-images.githubusercontent.com/89556233/228722408-3e6a2a8e-badb-4ab4-893b-5788d26d8cd5.png)
+
